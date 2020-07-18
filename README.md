@@ -1,120 +1,20 @@
-#include "DHT.h"
-#define echo 10
-#define trig 11
-#define DHTPIN 2 
-#define tep 8
-#define mod 7
-#define DHTTYPE DHT11
+# VIRTUAL STICK
 
-DHT dht(DHTPIN, DHTTYPE);
+Written by -> Sarun Sathis
 
-long dis=0;
-int j=0,s=0;
-float C,H;
+# DISCLAIMER :
+The author does not take responsiblity for any loss or damage of any of the components used. These codes are wriiten only for fun activity and not intended for regular uasges. The users are requested to flow the normal norms and safety measure before testing this model in dangerous situations. This project is still in the development stage and cannot yet replace any existing models. Users are free to make changes to code or even suggest codes. This projects has been tested on real conditions. BE SAFE AND HAVE FUN.
 
+# COMPONENTS USED :
+Arduino UNO, Humidity and Temperature sensor(DHT11), Ultrasonic sensor module, Resistors, Bluetooth Module
 
-void setup() {
-  pinMode(echo,INPUT);
+# CONNECTIONS :
+Refer the code to make apt connections. The main point to note is that all the grounds should be connected for correct value measurement.
 
+# DESCRIPTION :
+The main aim of this project is to replace the existing traditional stick with a smart stick that can help the blind in sensing the environment. This device returns the temperature and climate condition to a smart device with bluetooth compactiblity. Inturn the device reads out the recieved data into the ear-piece the person is wearing. This device has the ability to produce a warn about a fast approaching object. 
 
-  Serial.begin(9600);
-  dht.begin();
-
-  pinMode(trig,OUTPUT);
-  pinMode(12,OUTPUT);
-
-}
-
-
-
-void temp()
-{
-  float c,h;
-  c=dht.readTemperature();
-  h=dht.readHumidity();
-
-    if(s==0)
-    {
-      C=c;
-      H=h;
-      s++;
-    }
-    if(c!=c && H!=h)
-  { Serial.print("temperature :  ");
-   Serial.println(c);
-   Serial.print("humidty : ");
-   Serial.println(h);
-   C=c;
-   H=h;
-  
-
-   if(c>34 && h<60)
-   Serial.println("today will be a hot day and with almost no probablity of rain ");
-   else if (c<27 && h>60)
-   Serial.println("today is a relatively colder day and there are chances of rain ");
-  }
-}
-
-int i=0;
-void speedi()
-{ long t1=0,t2=0,s=0,d1=0,d2=0;
-
-  
-  digitalWrite(trig,1);
-  delayMicroseconds(2);
-  digitalWrite(trig,0);
-  
-  d1=pulseIn(echo,1);
-  d1=d1*0.034/2;
-
-  delay(550);
-
-  digitalWrite(trig,1);
-  delayMicroseconds(2);
-  digitalWrite(trig,0);
-  d2=pulseIn(echo,1);
-  
-  d2=d2*0.034/2;
-  
-  s=(d1-d2);
-  
-  if(s<=-75 && i==0)
-  {
-    Serial.println("obstacle arriving at high speed relatively");
-    i=1;
-  }
-  else
-  i=0;
-}
-void distance()
-{
-  
-  digitalWrite(trig,1);
-  delayMicroseconds(2);
-  digitalWrite(trig,0);
-
-  dis=pulseIn(echo,1);
-  dis=dis*0.034/2;
-
-  if(dis<=50 && j==0)
-  {
-    Serial.println("obstacle approaching in ");
-    Serial.print(dis);
-    Serial.println( " centimeters ");
-    j=1;
-  }
-  else
-  j=0;
-
-}
-int a=0;
-void loop() {
-  digitalWrite(12,1);
-
-  temp();
- distance();
- speedi();
-
- delay(750);
- 
-}
+# FUTURE AIMS :
+1. Increase the accuracy and speed of different calculation and convert it into a warning system for cyclist.
+2. Make an app that can fetch different data from smartphone and make it more user friendly.
+3. Low cost production and better compactiblity range.
