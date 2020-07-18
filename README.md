@@ -12,7 +12,7 @@ Arduino UNO, Humidity and Temperature sensor(DHT11), Ultrasonic sensor module, R
 Refer the code to make apt connections. The main point to note is that all the grounds should be connected for correct value measurement.
 
 # DESCRIPTION :
-The main aim of this project is to replace the existing traditional stick with a smart stick that can help the blind in sensing the environment. This device returns the temperature and climate condition to a smart device with bluetooth compactiblity. Inturn the device reads out the recieved data into the ear-piece the person is wearing. This device has the ability to produce a warn about a fast approaching object. 
+The main aim of this project is to replace the existing traditional stick with a smart stick that can help the blind in sensing the environment. This device returns the temperature and climate condition to a smart device with Bluetooth compatibility. Inturn the device reads out the received data into the ear-piece the person is wearing. This device has the ability to produce a warning about a fast-approaching object.
 
 # FUTURE AIMS :
 1. Increase the accuracy and speed of different calculation and convert it into a warning system for cyclist.
